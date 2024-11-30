@@ -1,0 +1,463 @@
+DAY 2
+
+OPERATORS
+ARTHEMATIC OPERATORS + - /(gives quotient) % (gives remainder) *
+
+num1 + num2
+values/numbers/input/operands
+
+1. All Arithmetic operators take 2 operands (All are Binary operators)
+2. The operator is placed in-between the operands (Infix notation)
+num1 num2 + Postfix notation
++ num1 num2 Prefix  notation
+3. Input are numbers and output is also a number
+4. Some operators have lesser precedence (+ - have less precedence than * / %)
+
+result = num1 + num2 * num3
+Here the multiplication is performed 1st (Broadmas rule)
+
+5. In the below statement, num1 - num2 is performed 1st. Thus all Arithmetic operations are performed from left to Right (Associtivity)
+result = num1 - num2 + num3
+
+6. 45 + 5.5
+
+num1 = 45
+num2 = -9
+sum = num1 + num2
+
+The operations can be performed only if the type of data of the operands are same.
+
+Note:
+0.0 is double which is of 8 bytes
+0.0f is float which is of 4 bytes
+
+45 is int
+5.5 is double 8bytes
+5.5f is float 4bytes
+
+num1 + num2 (operands)
+eg: num1 + num2 * num3 (* is performed later)
+* / % have more tendancy than + -
+
+num1 - num2 + num3 (- is performed first and followed by +) (left to right)
+
+How Negative numbers are stored in memory:
+int num = -23; // Signed integer
+signed int num = -23;
+signed long int num = -23; // MSB bit will be dedicated to store sign of the number.
+If MSB is 1 then the number is -ve. If MSB is 0 then the number is +ve
+
+-23
+23  (absolute of -23)
+10111
+
+0001 0111
+1110 1000
+        1
+1110 1001
+
+-1 * 2(7) + 1 * 2(6) + 1 * 2(5) + 9
+= -128 + 64 + 32 + 9
+= -64 + 41
+= -23
+
+34
+00100010
+
+11011101	(1s complement) 
+	   1	(2s complement)
+11011110 -34
+
+negative numbers are stored in memory using 2s compliment
+
+RELATIONAL OPERATORS: > < >= <= != ==
+1. All are binary operators
+2. used with infix notation
+3. less precedence than arthematic but higher than logical operators
+4. i/p are numbers. o/p is boolean (1 or 0)
+5. left to right associtivity
+
+48 > 6 	true o/p 1
+45 != 45 false o/p 0
+34 >= 25 	o/p 1
+45> 39 is same as 45 >=40
+n <= 20 is same as n < 21
+
+in the above two statements, each statements are same
+that is, whatever we write using >= or <= can be written using > and <
+thus, it looks as if >= and <= are redundant.
+
+[10,20] is closed interval where both end values are included 
+(20,40) is open interval. here range is 21 to 39 end values are not included
+[30, 50) range is 30 to 49
+
+readability goes down when > is replaced by >=
+
+LOGICAL OPERATORS & && | || !
+
+C1 & C2 & C3  	Here all conditions are always checked
+C1 && C2 && C3	Here if the C1 fails, then remaining conditions are not checked
+
+! is unary operator. All unary operators are to be used before the operand.
+In C, there is no bool DT. Hence true is implecitly converted to 1 and false to 0.
+Also note that all non-zero values incuding -ve numbers are treated as true and only zero is treated as false.
+
+I/P to logical operators is  truth values (boolean)
+O/P is also boolean
+
+
+UPDATION OPERATORS ++ --
+increment and decrement
+both of these operators have 2 behaviour. infix and postfix
+
+BITWISE OPERATORS & | ^ ~ (1s com) >> <<
+
+00010111 X
+00001100 Y
+
+00000100 & 4
+
+00011111 | 31
+
+00011011 ^ 27
+
+11110011 ~Y
+-128+64+32+16+3= -64+51 = -13
+
+X >> 3
+00010111
+00001011
+00000101
+00000010 2
+
+Y << 2 	
+00001100 Y=8
+00011000 Y=16
+00110000 Y=32
+
+--------------------------------------------------------
+
+p3 
+#include <stdio.h>
+// Program to check if a number is Even
+
+int main()
+{
+    int inputNum = 0;
+    puts("Enter a number to check if it is Even");
+    scanf("%d", &inputNum);
+    if (inputNum % 2 == 0)
+        printf("%d is Even number", inputNum);
+}
+------------------------------------------------------------
+p4
+program to check if a number is even or not
+
+#include<stdio.h>
+
+int main() {
+    int inputNum = 0;
+    puts("enter number to check");
+    scanf("%d", &inputNum);
+    if (inputNum % 2 ==0)
+     printf("%d is even number", inputNum);
+    else
+     printf("%d is not an even number", inputNum);
+}
+
+------------------
+p5
+
+#include <stdio.h>
+// Program to check if a number is Even or Odd.
+
+int main()
+{
+    int inputNum = 0;
+    puts("Enter a number to check if it is Even");
+    scanf("%d", &inputNum);
+    if (inputNum % 2 == 0)
+        printf("%d is Even number", inputNum);
+    else
+        printf("%d is an Odd number", inputNum);
+}
+------------------------------------------------------------
+p6
+#include <stdio.h>
+// Program to print a number in different formats/base.
+
+int main()
+{
+    int num = 79;
+    printf("%d  %i  %o  %x  %X \n", num, num, num, num, num);
+    // 79  79 117  4f  4F
+    int num2 = 0173;
+    printf("%d  %i  %o  %x  %X \n", num2, num2, num2, num2, num2);
+    //     123 123  173 7b  7B
+    int num3 = 0x5d;
+    printf("%d  %i  %o  %x  %X \n", num3, num3, num3, num3, num3);
+    //     94   94  136 5d  5D
+}
+------------------------------------------------------------
+p7
+#include <stdio.h>
+// Program to do formatting on int number.
+int main() {
+    int num = 7955;
+    printf("%d\n", num);     // print num
+    printf("%6d\n", num);    // Allocate 6 character spaces and print num with right allignment
+    printf("%-6d\n", num);   // Allocate 6 character spaces and print num with left allignment
+    printf("%-6d**\n", num); // Allocate 6 character spaces and print num with left allignment and after that print 2 stars
+    printf("%07d\n", num);   // Allocate 6 character spaces and print num with right allignment and in empty spaces fill it with zeroes
+    printf("%3d\n", num);    // Allocate 3 character spaces and print num with right allignment [Here formatting is ignored and data is given priority]
+}
+/*
+7955
+  7955
+7955
+7955  **
+0007955
+7955
+*/
+------------------------------------------------------------
+p8
+#include<stdio.h>
+//prog to do formatting a float number
+
+int main()
+{
+    float num = 795.065;
+    printf("%f\n", num);    //print num
+    printf("%12f\n", num);   //allocate 12 character spaces and print with right allignment
+    printf("%-14f\n", num);  //allocate 14 character spaces and print with left allignment
+    printf("%014f\n", num);  //allocate 14 character spaces and print with right allignment and fill with 0
+    printf("%.2f\n", num);  // print only 2 digits after decimal point
+    printf("%08.1f\n", num); // print num, allocate 8 spaces, print 1 digit after decimal point and fill with zeros
+    printf("%-8.1f\n", num); // print num with left allignment, alloctae 8 spaces and 1 digit of precision
+    printf("%05.0f\n", num); // print num with no precision and right allignment
+
+}
+
+-------------------------------
+p9
+
+#include<stdio.h>
+//prog to do formatting a string
+
+int main()
+{
+    char place[16] = "vizag";
+    printf("%s\n", place);
+    printf("%15s\n", place);
+    printf("%-15s\n", place);
+    printf("%.4s\n", place);
+    printf("%5s\n", place);
+
+
+}
+
+---------------------------------
+p7
+Type Casting (conversion of data from one DT to another)
+upcast: conversion of a lower DT (int) to higher DT (float/double)
+downcast: conversion of a higher sized DT to lower sized DT (int to short int or float to int or double to float)
+Implicit cast: The cast which happend implicity
+Explicit cast: where the cast is visible with code
+
+Downcast is more dangerous as there is a chance of loss/change of data
+Up cast is not so dangerous yet not good: There is no change or loss of data but more memory will be used.
+
+Casting must be avoided. It is usually design errors.
+-------------------------------
+p10
+// Program to do understand type casting.
+int main() {
+    int num = 17 / 3;           // No Casting at all
+    printf("%d  %f", num, num); // 5   0.000000
+}
+------------------------------------------------------------
+p11
+
+17 / 3
+Here both numerator 17 and denominator 3, both are integers. When both N and D are integers, then Integer division happens where the quotient is integer.
+So, the o/p is 5
+
+If any of the N or D or both are float or double, then floating point division happens where the quotient may or may not be int always. Mean, to say, we can continue the division by taking decimal point.
+
+int main()
+{
+    float num = 17 / 3;         // One type casting happens. from 5 to 5.0f which is implicit up cast
+    printf("%f  %d", num, num); // 5.000000
+}
+
+
+
+#include<stdio.h>
+//prog to do formatting a string
+
+int main()
+{
+    float num = 17 / 3;  //one type casting happens. from 5 to 5.0f which is implicit up cast
+    printf("%f %d", num, num); //5.000000 0
+
+}
+
+-----------------------
+p12
+
+int num = (float)((int) 17.5 / 2.0);
+
+1. 17.5 to 17 (explicit down cast from double to int)
+o/p: 17/2.0
+
+2.now, 17 is casted to 17.0 (implicit up cast from int to double)
+o/p: 17.0/2.0 = 8.50000000
+3. 8.5 which is double is casted to float (explicit down cast from double to float)
+4. 8.5f is casted to 8 (implicit down cast from float to int)
+
+int main()
+{
+    int num = (float)((int)17.5 / 2.0);
+    printf("%d", num);
+}
+Ans is 8
+
+----------------------------------------------
+p13
+#include<stdio.h>
+//prog to do understand updation operators
+int main()
+{
+    int x = 10, y = 3, z = -1;
+    x++;
+    printf("X=%d, Y=%d, Z=%d\n", x, y, z); //11 3 -1
+    ++x;
+    printf("X=%d, Y=%d, Z=%d\n", x, y, z); //12 3 -1
+    y = z--;
+    printf("X=%d, Y=%d, Z=%d\n", x, y, z); //12 -1 -2
+    z = --x;
+    printf("X=%d, Y=%d, Z=%d\n", x, y, z); //11 -1 11
+    x = y++ + ++y;
+    //  -1   + 1
+    printf("X=%d, Y=%d, Z=%d\n", x, y, z); //0 1 11
+
+}
+
+-----------------------------------------------------------------
+
+HOW TO SOLVE A PROBLEM
+
+1.Understand the problem. recognise the req data (I/P). 
+
+---------------------------------------------------------------------
+p14
+Check if a number is perfect square
+
+#include<stdio.h>
+#include<math.h>
+//prog to check if a number is perfect square
+int main()
+{
+    unsigned int inputNumber = 0;
+    int rootNumber = 0;
+    printf("enter the number to check for perfect square");
+    scanf("%u", &inputNumber);
+    rootNumber = (int)sqrt(inputNumber);
+    if (rootNumber * rootNumber == inputNumber)
+     printf("number is perfect square");
+    else
+     printf("number is not perfect square");
+
+
+}
+
+------------------------------------------------------
+ASSIGNMENT DAY2
+p15
+
+#include<stdio.h>
+
+//prog to check if a character is alphabet
+int main()
+{
+    char character = 0;
+    printf("enter the character");
+    scanf("%c", &character);
+    if ((character >= 'A' && character <= 'Z') || (character >= 'a' && character <= 'z'))
+     printf("the character is an alphabet");
+    else
+     printf("the character is not an alphabet");
+
+
+}
+------------------------------------------------------
+p16
+
+#include<stdio.h>
+
+//prog to check if a character is alphanumeric
+int main()
+{
+    char character = 0;
+    printf("enter the character");
+    scanf("%c", &character);
+    if ((character >= 'A' && character <= 'Z') || (character >= 'a' && character <= 'z') || (character > '0' && character < '9'))
+     printf("the character is an alphanumeric");
+    else
+     printf("the character is not an alphanumeric");
+
+
+}
+--------------------------------------------------------------------
+p17
+#include<stdio.h>
+
+//prog to check if a character is digit
+int main()
+{
+    char character = 0;
+    printf("enter the character");
+    scanf("%c", &character);
+    if (character > '0' && character < '9')
+     printf("the character is digit");
+    else
+     printf("the character is not digit");
+
+
+}
+-----------------------------------------------------------------------
+p18
+#include<stdio.h>
+
+//prog to check if a letter is small case
+int main()
+{
+    char letter = 0;
+    printf("enter the letter");
+    scanf("%c", &letter);
+    if (letter >= 'a' && letter <= 'z')
+     printf("the letter is small case");
+    else
+     printf("the letter is not a small case");
+
+
+}
+-----------------------------------------------
+p19
+#include<stdio.h>
+
+FARMER PROBLEM STATEMENT
+
+Mahesh is a farmer and owns 80 acres of land. His land is equally divided into 5 segments. He grows tomatoes in the 1st segment, potatoes in the 2nd segment, cabbage in the 3rd segment, sunflower in the 4th segment and sugarcane in the 5th segment.
+He is converting his land from chemical-driven farming to chemical-free farming. Mahesh starts with the conversion of vegetables into chemical-free produce. He spends the first 6 months doing the same.
+He then converts the sunflower land bank into chemical-free farming. This takes him another 4 months. Finally, he converts sugarcane into chemical-free farming over the next 4 months.
+He gets a yield of the following for tomatoes. 30% of his tomato land gives him 10 tonne yield per acre.
+The remaining 70% of his tomato land gives him 12 tonnes yield per acre. The selling price of tomato is Rs. 7 per Kg.
+The yield of potatoes is 10 tonnes per acre. He sells each kg at Rs. 20.
+The yield of cabbage is 14 tonnes per acre. He sells each kg at Rs. 24.
+The yield of sunflowers is 0.7 tonnes per acre. He sells each kg at Rs. 200.
+The yield of sugarcane is 45 tonnes per acre. He sells each tonne at Rs. 4,000.
+All the crops are sowed at the same time. Mahesh gets the above yield at the above-mentioned rate in one crop cycle across his entire land of 80 acres.
+What is
+a. The overall sales achieved by Mahesh from the 80 acres of land.
+b. Sales realisation from chemical-free farming at the end of 11 months?

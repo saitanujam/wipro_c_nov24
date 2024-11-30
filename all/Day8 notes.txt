@@ -1,0 +1,162 @@
+DAY8 FRIDAY
+
+STRUCTURES:
+We knwo that array is a DS where we bind data and, the data must be of the same DT in the array
+
+However in real life we must have to work with data which are properties of the entity from the specific domain.
+
+For example, from the banking domain, the entity account as following properties:
+acc_num
+acc_holder_name
+balance
+type
+phone_num
+
+Now, let us look at the DT of these properties
+acc_num				unsigned int
+acc_holder_name		char[64]
+balance				float
+type				char[32]
+phone_num			unsigned long long int
+
+we observe that the DT of the properties are different or their sizes are different.
+But all these properties belong to the same object.
+Hence we must have to bind them (storing them together)
+
+But we cant use an array to do this.
+
+Thus, we have a new feature of the language:
+STRUCTURE
+
+In structure we can bind the data either of different types or different sizes.
+struct is the keyword to define a structure.
+
+struct Account {
+	unsigned int acc_num
+	char acc_holder_name [32];
+	float balance
+	char type [16];
+	unsigned long long int phone_num
+	};
+	
+The above statements together are called structure definition.
+Note that, there is no memory allocation for the above definition.
+*** The definition is the information being passed by the programmer to the compiler.
+The compiler makes Book Keeping about the structure (Stores information about the structure)
+Thus structure definition is nothing but Meta Data of the structure. 
+
+Account
+member_num		member_name		member_DT		member_size
+1				acc_num			unsigned int	4bytes
+2			acc_holder_name		char*			32byte
+3				balance			float			4bytes
+4				type			char*			16bytes
+5				phone_num		u long long int	8bytes
+
+Since in the structure there is no memory allocation we cannot assign or initialize values to the members/fields/attributes/ elements of the structure.
+
+If the structure definition is defined inside the function then it is known only by that function.
+Hence, we difine the structure globally (outside the function)
+
+struct Account {
+	unsigned int acc_num
+	char acc_holder_name [32];
+	float balance
+	char type [16];
+	unsigned long long int phone_num
+};
+
+struct Account acc1;
+
+Here memory is allocated to the structure variable acc1 which is 64 bytes
+---------------------------------------------
+struct Account {
+	unsigned int acc_num
+	char acc_holder_name [33];
+	float balance
+	char type [16];
+	unsigned long long int phone_num
+}; acc2;
+	
+Note that, we can create the structure object or variable as soon as it is defined as shown above.
+Now, the size of acc2 is not 65 bytes but rather 72 bytes. The extra 7 bytes we get is called as STRUCTURE PADDING
+
+To create a structure object we must use the declaration as below:
+struct Account acc1;
+
+Here the struct keyword is necessary. However, in C++ structures, the use of struct keyword while creating an object is optional.
+
+To avoid using struct keyword while creating the objects, we must use typedef:
+
+typedef struct Account {
+	unsigned int acc_num
+	char acc_holder_name[33];
+	float balance;
+	char type[16];
+	unsigned long long int phone_num;
+}Account;
+// The name "Account" in Line #501 is the Alias name we are creating for struct Account
+
+Thus, now, we can create structure objects using any of the 2 below declarative statements:
+
+struct Account acc1;
+Account acc1;
+
+Array of structures:
+Suppose I want to create many accounts at a time, say 100.
+
+Account accounts[100];
+Here we can store details of 100 different accounts. But we know that an Array is not a memory efficient DS.
+And here, every account(struture) itself is a heavy object. Thus creating array of heavy objects is a bad idea.
+Hence we must either create the array of structures in Heap or we must use Linked lists to avoid memory inefficiency.
+
+Pointer to a structure: struct3.c
+
+bit fields:
+When ever we want to allocate memory in terms of bits
+Example: Suppose a university has declared the rules for admission in its colleges as follow:
+minimum age: 18
+maxinum age: 75
+
+Lets implement this: struct4.c (day8)
+
+structure within a structure
+pointer inside a structure
+function pointer as structure field
+SRS
+
+typedef struct Employee {
+     int id;
+     char name[32];
+     float salary;
+     struct Employee* emp;
+}Employee;
+
+
+Employee
+memebr_No	member_name		member_DT		member_size
+1			id				int				4
+2			name			char*			32
+3			salary			float			4
+4			emp				Employee*		4	
+
+int main() {
+	Employee employee = {101, "nithin", 199000.0f, NULL};
+	printf("Size of Employee = %d", sizeof(employee);
+}
+-------------------------------------------------------------------
+
+
+
+structure inside a structure
+pointer inside a structure
+function pointer as structure field
+SRS
+Linked Lists
+Binary Search
+
+-------------------
+Bit manupalation
+File I/O
+enum
+union

@@ -1,0 +1,119 @@
+DAY7 28-11-24
+
+3D String Example:
+1. Store first name and last name of the last 5 presidents of Bhaarat
+
+2D String Example:
+Accept the strings from command line as given:
+"karnataka bengaluru" "odhisa bhubaneswar" "sikkim gangtok" "tripura agartala" "goa panjim"
+
+You can take any number of strings as you wish.
+Each string is made up of state-capital pair which is seperated by space
+
+Now, create 2 2D char arrays
+states[10][32];
+capitals[10][32];
+
+Now seperate the states and capitals and store them in the given 2 arrays and print them with proper formatting.
+
+------------------------------------------------------------
+FUNCTION POINTER
+
+As we have pointer that points to a variable (or another pointer which is also a variable), we can also have pointer pointing to a function.
+
+A pointer of type float* can point to any variable in the function/program of type float.
+
+Thus, we know that variables have data type.
+
+and functions have prototypes.
+Thus a pointer of a specific prototype can point to any function  with that particular prototype.
+
+--------------------------------------------------------
+
+DYNAMIC MEMORY ALLOCATION
+
+All the variableswe declared so far in all programs willl be created as soon as the control goes through the declarative statement.
+
+example: int num1, num2, num3;
+here these 3 variables will be created when control goes there during runtime and nobody can stop it nor we can modify the size or data type or number of variables.
+
+Example2:
+float studentAverageScores [50];
+
+here the programmer has defined this statement.
+Hence the programmer is assuming that there might be 50 students whose avereage scores need to be stored.
+
+However, it is user/ client who knows the number of students.
+
+now, if the user stores only 10 scores then 40 elements are wasted.
+in another case if user want to store 80 scores, then there will be shortage of 30 variables.
+
+So it is good if the user can decide the size of the array.
+However, the user comes into the picture during runtime only.
+and during runtime, it is impossible to change / modify the program code.
+Hence, we need a new way to decide the amount of memory to be allocated during runtime.
+and this mechanism is called as dynamic (runtime) memory allocation.
+
+we know C is a procedural language and hence to achieve this, we have 3 functions available from stdlib.h as
+malloc()
+calloc()
+realloc()
+free()
+
+malloc() :
+It takes the number of bytes as argument and it allocates memory in Heap and it returns the address of 1st byte.
+***Note: malloc() returns an address. this means in the code, there must be a pointer to receive this adddress.
+The pointer is a variable.
+and all variables have their DT
+
+malloc() is used to allocate memory to store data of any DT including user defined DTs
+Hence the address which malloc returns is a GENERIC ADDRESS.
+A generic address is one whose DT is not yet assertained.
+Thus the prototype of malloc is:
+
+void* malloc(int);
+more correctly it is, ]
+void* malloc(size_t); 
+
+*** Note that the memory allocated in Heap area, does not carry a name. It must be accessed only via its address.
+
+*** Note that, the memory allocated in the Heap, must be deallocated using free(). The memory deallocation from Heap is not storage class dependent.
+
+Implement linear search using dynamic array
+also discuss the efficiency of sequential search
+
+Read N, the size of arraycreate the array in heap
+Read the N numbers of the array
+read the numbers to be searched in the array
+call the function linearSearch() to implement the logic
+Print the result accorindg to the return va;lue of function
+
+HOW TO USE malloc():
+
+say suppose we want to store 5 float numbers. now we know float is 4 bytes
+
+malloc(20)
+This allocates 20 bytes and now we can store 5 float values.
+
+However, what is some day in future, the size of float changes to 8 bytes?
+Then this code malloc(20) willl fail. because then we would need 40 bytes to store 5 float values.
+
+So, we change the code like this:
+malloc(sizeof(float) * 5);
+
+now, this code works fine, doesnt matter what ever the size of float would be. 
+However, this will always allocate memory only for exactly 5 float values.
+also note that, the programmer is deciding how many float values will be stored.
+
+What if we need to store 10 float values in one execution and 5 in another and 20 float values in 3rd execution and so on?
+
+Hence Read N from user and user can decide how many values he/she wish to store.
+and then call: malloc(sizeof(float) * N)
+
+two types of functions
+mutator: fun which changes the data structure 
+accessor: only to read the data
+
+https://docs.google.com/forms/d/1aBR9YkPCJU3oGtcbrSC4L3BTBu6YV0oivl0k0vdB0S8/edit
+
+https://docs.google.com/forms/d/18RmgVGPQqygiHLdM6raTgQmTEhtRwfPE5PXdHlyB4SE/edit

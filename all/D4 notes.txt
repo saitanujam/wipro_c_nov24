@@ -1,0 +1,132 @@
+DAY4 25-11-24
+
+Multi file program
+
+Step1: 
+Create a header file (.h file)
+the .h file will have only function declarations
+the .h file will have respective .c file where the functions are defined
+
+the functions are to be defined for the solution of the given problem. The functions in a file should be related (modular). Example, all the I/O functions are grouped into stdio.h and all string handling functions are grouped into string.handling
+
+For example, in college management system application, assume the entities are:
+Faculty and student
+so the faculty related functions will be put into faculty.h and these fun are then defined/implemented in faculty.c
+similarly we will have student.h and student.c
+
+Now, this solution will later be used in the driver code (user code)
+
+Prime Number example:
+divide 50 from 2 till 25 only, because
+X any number > X/2 till X-1 cannot divide X-1Actually to check if a number is prime, dividing the number say X, from 2 to ciel(sqrt(x)) is enough
+for example, to check if 50 is prime, divide 50 from 2 to ceil(sqrt(50)) which is 2 to 8.
+
+
+
+-----------------------------------------------------
+
+LOCAL VARIABLE: 
+
+A variable declared inside a block of {} is called as a local variable and its scope (visibility/ accessibility) is only inside that block
+The best example for a block is function {}
+Like wise we have, if {} else {} loop {} switch {} etc.
+
+The variable declared inside a block is visible/accessible only inside that block.
+Further, its life is also inside the block. Thus, when the control comes outside the block, the variable declared inside the block will deallocated (deleted from memory).
+
+The local variable will have either default value or junk value (compiler dependent). In some compilers like visual studio, the variables will be empty until they are initialized, i.e. the 1st assignment to the vairable is considered to be the initialization. This is decided by the compiler. Thus local variable values will be known at compile time.
+
+Now, the variables which are function arguments (parameters) too are similar to local variables. However the only difference is that, function parameters will get their value only during runtime. and thus their value is not assertained in compile time.
+
+STATIC LOCAL VARIABLE:
+it is also a local variable thus it is accessible only inside the block. 
+However, its life is retained until the end of the program. 
+Note that it gets life only once.
+Thus, when the control goes to the declarative statement of a static local variable for the 2nd time onwards, there wont be any memory allocation, because the variable already exists in memory.
+
+GLOBAL VARIABLE:
+Global variable is one which is declared outside the function (in fact all functions)
+Note that, all functions are global in nature, meaning no function can be defined inside another.
+Thus, a global variable is accessible or visible to all the functions inside the file.
+However, if the functions in other FILES, if they wish to access global variable defined/declared in other file, then we have to do the below 2 things:
+1. include the file in which the global variable is defined
+2. say to the compiler that you wish to use an EXTERN variable (variable declared in other file) using the keyword extern
+A global variable has project scope (in all files and all functions can access it) and its life is till end of the program.
+stored in GDS (Global Data S)
+
+STATIC GLOBALL VARIABLE
+if we wish to have a global variable but we dont want any other file to access it (functions from other files) then make it static.
+Thus, the static global variable has file scope. and its life is life of the program.
+
+---------------------------------------------------------------------
+MEMORY REPRESENTATION OF A PROGRAM DURING RUNTIME
+
+during runtime the memory allocated is bifurcated in 
+CODE AREA: the compiled code will be  stored
+GDS: storagee of global var, static global var and static local variable
+STACK AREA: frames of the function are stored (local var, fun parameters, return address and method addresses/ addresses of functions (linkage))
+HEAP AREA : Dynamically allocated memory (the memory allocation wihich is decided at the run time.) is stored here.  
+note that all memory allocation happens at the run time only.
+
+DIFFERENT STAGES OF A PROGRAM
+there will be 2 phases for any program 
+PHASE1: COMPILE TIME PHASE
+EDITING:
+writing the program.
+extensions will be .c or .cpp
+
+PRE PROCESSING: 
+macro expansion
+anything that we write at the top of the program 
+example: #include, #define etc
+these have to be first loaded to the memory which loads the included files in the #include/ #define etc
+  
+COMPILATION:
+step1: SYNTAX will be checked. if syntax is wrong error will be shown if correct continues to step 2
+step2: TRANSLATION form human lang to machine lang (.c to .o / .obj)
+step3: INTERPRETATION. any executable should be machine specific
+interpreter is part of compiler only in c and cpp but not java
+
+LINKING:
+links all the files i.e generates the address to the functions which will later be used during the run time.
+
+PHASE2: RUN TIME PHASE
+EDITING:
+COMPILATION:
+
+------------------------------------------------------------------
+Function Call Stack:
+
+we all know that the computer has CPU. The CPU has processor. The processor has ALU, Signal unit and registers.
+Registers are memory units within the processor.
+There are 2 types of registers
+General purpose and special purpose.
+The general purpose registers can be used to store anything.
+
+However, the special purpose registers can be used only for specific purpose.
+Following are the special purpose registers:
+
+Accumulator: It is used to store intermediate results
+For example, in x+y+z the values of x and y are brought from memory and are stored in registers.
+The x+y value is then stored in accumulator which will be later added to z.
+
+IR: Instruction registers
+It stores address of the current instruction that is getting executed.
+
+PC: Program Counter
+It holds address of next instruction to be executed
+
+FP: Frame pointer
+It holds address of the frame of the function which is curently running
+
+SP: It holds adddress of the top frame in the stack.
+
+other than these, we have MAR and MDR also.
+
+Frame:
+A frame roughly is the memory allocated to a function. contents of a frame are:
+local variables (if any)
+function arguments (if any)
+addresses of the called functions (callee) (if any)
+return address (if any)
+

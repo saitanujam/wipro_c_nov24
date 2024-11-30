@@ -1,0 +1,230 @@
+DAY5 26-11-24
+
+EVOLUTION OF PROGRAMMING LANGUAGES
+
+It all started with off-on which are seen as 0's and 1's.
+the pattern of 0's and 1's were later used to assume the characters which humans work with (alphabets, symbols, digits etc)
+Then for standardization, characters like ASCII were introduced
+later human friendly language was the need
+Hence, the first successful human friendly lang was Assembly language
+In Assembly Language, the Nemonics were used like add, mul, sub, copy, mov 
+add x, y
+This will add x and y and store the result in x
+However, assembly language was not modular, not procedural and there are no libraries.
+Hence professional then started to build languages depending on their requirements, projects and domain.
+Thus, the languages later appeared were domain specific. like, Fortran which is formula translation which is suitable for only algebraic and engineering applications. 
+COBOL which is good for only business and Finance applications.
+
+Here, the problem is the languages cannot be used for other domains and the engineers are forced to learn new languages for every new domain.
+
+Hence, the need was Domain Friendly language.
+
+Modularity:
+The code we define/implement for real life application and software will be huge. hence, proper organising and arranging the code is very much necessary.
+Thus grouping the code into fils and folders or packages or modules were introduced
+
+Procedural:
+As we know now that we solve huge very big applications that have huge amounts of code, the given big problem must be divided and then conquer.
+
+Thus the big problem is divided into smaller size problems (1st they are divided in terms of entities and later in terms of functionalities).
+  
+For olb=ving this smaller sized problem (which must atomic in nature and must represent a real life functionality) we define a procedure/ behaviour/ function/ definition which is implementation.
+
+Thus a function that solves an atomic real life problem (business rule)
+A function/ procedure that solves only one priblem is said to be HIGH COHESIVE 
+The function/procedure that communicate to each other and thus solving the problem are said to be LOOSELY-COUPLED solution.
+
+If a function/instruction/program/class etc.. solves 2 or more problems then it is said to be LOW/ LESS COHESIVE and these functions leads to TIGHT COUPLED SOLUTIONS.
+
+Thus, High cohesive leads to loose coupling
+Low Cohesive leads to tight coupling
+
+The low cohesive functions/methods naturally become less usable.
+
+High cohesive = solves only single problem or the problem that is required
+low cohesive = solves 2 or more problems hence wont be used as much
+Loosly coupled = when we do changes in 1 function and it would not force to do the change in the other part of the program
+Tightly coupled = when we do changes in 1 function and it will force to do the change in the other part of the program
+
+In 1960s the competition and hunt for programming languages were on extreme rise.
+Simula67 was an object oriented prog lan (OOPL) which came with the concept called as class.
+This was later used by all OOPLs.
+Here class is to implement real life entity from any domain.
+Note that the purpose of an OOPL is to make the language domain friendly.
+
+lets take banking domain entities are: account transaction
+
+class Account
+	acc_num
+	balance
+	type
+	name
+	phone_number
+functionalities in class	
+	create()
+	delete()
+	freeze()
+	modify()
+	search()
+	list()
+	
+Class Transaction
+	id
+	acc_numtype
+	datetime
+	amount
+	
+	deposit()
+	withdraw()
+	change_pin ()
+	mini_statement()
+	long_statement()
+
+THE BIRTH OF C AND UNIX:
+in 1960s need for computers is evident and we need minimum software and Apps. These put tigether are called OS.
+So we need a good OS-( huge set of programs)
+In the competition of building an OS, AT & T Bell Labs too said, they will build an OS which is multi programming and multi user.
+they started in 1961 and after 2yrs the built a lang called B which is not working well
+After an other 3yrs they built BCPL they thought it was good, so using BCPL they built Multix OSLater in 1967, Danieks Richie handled the team so he changed the language BCPL to C which came in 1970
+Using C, they built and translated Matrix ro UNIX
+So, in 1972 C langg nd UNIX OS were built.
+They were built "by the professionals for the professionals".
+
+C was accepted widely because it is easy to use, modular and procedural, memory efficient (stack based), DMA (dynamic memory allocation) is there, data binding can be done using structure, can be used for developing all kind of softwares, domain friendly, very fast at runtime,syncs well with diff levels of development.
+
+using C, C++ was built, C with classes language was built by Apple, 
+Java was built after c++
+
+Unix:
+HP UX is unix
+Apple MAC OS
+LINUX 
+IBM AIX
+SUN Microsystems Solaris
+Android
+ZoS are all built on unix
+
+Birth of C++
+when C was built everything was great. lang was so good but strategy was not good.
+Once a software is built it undergoes a lot of changes.
+Hence we need a lang that is used to build the software in different levels and also must allow modifications easily
+Hence the answer is C++
+Bjarne Stroustrap used inheritance to build C++
+so C++ is increment to C
+The increment is OOP concepts/features
+
+Thus C++ = C + OOP
+Thus C is not disturbed while building C++
+
+To overcome the short comings of C++, James Golsling built JAVA in 1990s
+
+----------------------
+also learn 
+Windows
+Android
+FS development tech Stack
+AI
+---------------------------
+
+POINTERS
+
+Unary & 
+"Address of "
+It can be applied only to variables. and we get the address of the variables.
+Pointers are also variables and thus we can apply & to pointers as well
+
+Unary *
+"De-referencing" or "Value-at"
+It can be applied only to an address and we get the value present in that address.
+Pointers hold the address and thus * can be applied to pointers as well
+we always de-reference (fetch/ getting the value present in that address) the complete size of a variable.
+
+int num = 50;
+A number like 'num' whose value is 50, is just a number. it has no uniy or property.
+however, an address always has a property called "LENGTH/SIZE of the data type" property.
+
+The size of a pointer irrespective of its data type including structure types is always same for a given OS.
+we observed that the size of a pointer on windows is 4 bytes and on unix/linux is 8 bytes.
+
+A pointer of data type X* can point to a variable of only type X
+
+TYPES OF POINTERS
+
+Normal pointer:
+A pointer pointing to an existing variable of proper data type. thus, the pointer can be used to access the variable.
+
+NULL pointer: A pointer whose value is NULL. It means, the pointer is not pointing to any variable.
+
+const pointer: 
+	1. pointer to a constant address: A pointer using which we cant modify the data of the variable to which the pointer is pointing to. However, the pointer can point to some other variables.
+	2. constant pointer: A pointer which is pointing to a variable and it can modify the data of the variable. but it cant be pointed to any variable.
+	3. Pointer is both ways constant: It cant point to any other variable and it cant modify the value of the variable to which it is pointing to.
+
+dangling pointer: A pointer which is still holding address of the memory location which is de-allocated.
+the memory is de-allocated but the pointer is still holding address.
+
+wild pointer: An un-initialized pointer is called a wild pointer.
+
+-----------------------------------------------------------------------------
+
+ARRAY:
+Array was first introduced to bring down the number of names we have to create.
+example, if we have to store 500 values then we need 500 variables. but handling or comprehending 500 names is too difficult.
+Hence, the array was introduced where irrespective of number of values (variables) we use onnly one name.
+we use the subscript operator to create and use an array.
+
+float ages[25];
+
+here we can store 25 values, all of type float in array ages.
+all the 25 values will be stored in continous memory locations. thus there is no gap between any 2 consecutive elements of the array.
+
+the size of an array is fixed at the time of its creation and it cant be modified later.
+since size of any array is fixed the array is a memory in-efficient data structure.
+Array is a data structure because all the elements in the array are arranged.
+we call something as data structure when the data in memory is not just stored but also arranged (structured/organised) in a specific form. This specific form helps in achieving either time efficiency or space efficiency or simplicity.
+time taken to access any element in an array is almost same. this is because how the array is implemented. Hence, array is time efficient DS. The time taken to access an element is also called as Look-Up and its efficiency is O(1), that is one unit time.
+
+An array is very easy to use and very commonly used where ever the size is smaller and predictable.
+
+an array is implemented using pointer and pointer arithmetic.
+
+POINTER ARITHMETIC:
+Any arthmetic that invlves an address is called as pointer arithmetic.
+The only possible pointer arithematic are:
+address + number  	is an address
+address - number	is an address
+address - address	is a number (this happens with the addresses of any 2 elements of an array to know the number of elements in between these 2 addresses)
+
+int array1[10] = {0}; // all elements are zero
+int array1[] = {2, 4, 5, 8, 9}; //size is taken automatically
+int array3[10] = {20, 5, 9, 11, 0, -2}; // remaining 4 elements will be zero. But this is a bad way of initializing the array.
+When we initialize an array, it is better not to mention its size.
+
+* A 2D array is actually 1D array in memory/physically
+* Name of an array is always address of the 1st element in the array.
+* Thus, name of the array + 1 will be the address of 2nd element in the array. 
+* When we apply * to name of the 1D array, then we get the value of 1st element of the array.
+* When we apply & to the name of the array, it behaves like address of the whole array. Thus, &array+1 will give the address of next 1D array
+
+#include<stdio.h>
+
+int main () {
+
+    float farray[] = {2.2f, 14.2f, 1.5f, 9.1f, 6.75f};
+
+    printf("%u  %u  %u  %u \n", farray, farray + 1, farray - 1, farray + 2);
+
+    printf("%u  %u  %u  %u \n", &farray, &farray + 1, &farray - 1, &farray + 2);
+
+    printf("%.2f  %.2f  %.2f \n", *farray, *farray+1, *farray + *{}farray);
+
+}  
+
+fArray, fArray+1, fArray-1, fArray+2
+// All of these are addresses
+ 
+&fArray, &fArray+1, &fArray-1, &fArray+2
+// All of these are addresses
+ 
+*fArray, *fArray+1, *fArray + *fArray
+// All of these are values

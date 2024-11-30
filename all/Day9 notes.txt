@@ -1,0 +1,76 @@
+DAY9 30-11-24
+
+LINKED LIST:
+when we have to store data in memory (say student data, where each student data is a structure)
+
+Here, if we create a static array (size given by programmer in the code, example student students[100]) then there will be huge amount of wastage or shortage.
+To overcome this, we take the size of the array from user and create dynamic array (the wastage or shortage is reduced but not completely removed)
+
+hence we use linked lists where we create memory only what is required.
+
+The only drawback w.r.t memory is that we need extra space to store the address (link) of the next node (and may be address of previous node in case of Doubly linked list)
+
+The disadvantage of linked list is that,the Nodes/elements cannot be randomly accessed. We have to move from the 1st nide to the 2nd and so on (in case of singly linked list)
+In addition to this, we can also move from last node to its previous node and so on in case of double linked list. 
+
+The Look-up (accessing a node) in a linked list is O(n) algorithm.
+
+The nodes in the linked list are placed randomly in memory and not in consecutive addresses. Hence we cannot apply pointer arithmetic as we do with arrays.
+--------------------------------------------------
+
+Operations we can perform on a linked lists:
+
+1. Add a new node
+	1. At front
+	2. At rear
+	3. At a specific position
+2. Delete Node
+	1. At front
+	2. At rear
+	3. At a specific position
+3.Search for a node with specific position
+4.Display the linked list
+
+-----------------------------------------
+IMPLEMENTATION of stack using LL:
+
+1. We can insert the node at front
+2. Delete the node from front
+
+This is teh best way to implement LL. Because both the operations have O(1) efficiency (no need to transverse the LL)
+
+IMPLEMENTATION OF STACK using LL
+1. Add node at rear
+2. Delete node from front
+
+IMPLEMENTATION OF QUEUE using LL
+1. Add node at rear
+2. Delete node from front
+
+-----------------------------------------------
+Implement program 1 using Doubly LL
+
+1. Add a new Node
+	1. At front
+	2. At rear
+	3. At a specific position
+2. Delete Node
+	1. From front
+	2. From rear
+	3. From a specific position
+3. Search for a node with specific data
+4. Display the Linked List (Front to Rear)
+5. Display the Linked List (Rear to Front)
+
+
+1. Find sum of the elements of an Array using a recursive function.
+2. Reverse the elements of an Array using a while loop.
+3. Swap consecutive elements of an Array using a for loop.
+4. Implement Linear(sequential) search using a multi file program.
+5. Swap the 1st half of an Array with the 2nd half elements.
+6. Implement Karpekar's constant program. Print the number of times the logic of finding the difference of 2 numbers had to be iterated.
+7. Count the times an element is present in an Array
+8. Remove duplicate elements from the Array and shift the
+elements (If n duplicate elements are removed then n zeroes should trail in the array)
+9. Find the smallest and biggest elements of the array of size N which is given by user (array is of type double)
+10. Convert the Odd elements in an array to Even numbers by adding one and Convert the Even elements into Odd by subtracting 1.

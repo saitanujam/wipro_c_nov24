@@ -1,0 +1,192 @@
+DAY6 27-11-24
+
+if int =1
+the address data type is int*
+the dt of int* is int**
+
+&arr	Address of the 1D Array
+arr		Address of 1st element in the Array
+*arr	Value of 1st element in the 1D Array
+
+&arr+1	Address of next 1D Array of of size 6 of type double
+arr+1	Address of 2nd element in the Array
+*arr+1	Value of 1st element + 1
+
+2D ARRAY IMPLEMENTATION
+&arr	Address of the entire 2D Array
+arr		Address of 1st Row (1D Array) in the 2D Array
+*arr	Address of 1st element in the 1st Row of the 2D Array
+**arr	Value of 1st element in the 1st Row of the 2D Array
+
+&arr+1	Address of next 2D Array of size 12 elements of type float
+arr+1	Address of 2nd Row in the 2D Array
+*arr+1	Address of 2nd element in the 1st Row
+**arr+1	Value of 1st element of 1st Row + 1
+--------------------------------------------------------
+int array[]; // array of integers
+int* array[]; // array of integer pointers
+char array[]; // array of characters
+char* array[]; // array of character pointers
+
+RECURSIVE FUNCTION:
+A function that calls itself
+A function that is both the calling function and the called function
+
+A function when it calls itself, it repeats.
+For every function call we know that there is a frame created in the run time.
+Thus, call to any function  in run time creates extra extra memory. 
+Thus, a recursive call utilizes memory for the frame.
+
+Also, we know that the PC content should be stored in the frame as RA (return address) and then the frame is pushed on the stack and SP is incremented etc.
+Thus, a recursive call or function call needs time to do the things implicitly
+Hence function calls should be avoided
+
+Now, w.r.t recursive function, there must be some exit to the recursive calls happening.
+otherwise, the call stack keeps growing and overflow at some point of time.
+Hence a condition is always necessary in a recursive function to stop the recursive call at some point of time.
+
+---------------------------------------------------------
+PROBLEMS ON RECURSIVE FUNCTIONS:
+1. Find factorial of a number using recursion. (Bad Idea)
+2. Find sum of digits of a number
+3. Find smallest number in an array of size N
+4. Print the Fibo series of N terms (1st 2 terms are 1 and 2)
+
+---------------------------------------------------
+PROBLEMS ON 2D ARRAYS:
+Find sum of 2 matrices
+Find the transpose of a matrix
+Find product of 2 matrices
+find sum of the total score of all players
+
+----------------------------------------------------------------------
+
+STRING
+A string is a data
+A string can be roughly divided into 2:
+	Alphabetic
+	Alphanumeric
+	
+All the characters of a string together make-up one data
+for example, "Seoul"
+
+This data is the name of a place. Thus all the 5 characters together is one data.
+To store one charavter, we need one character variable.
+Thus to store "Seoul" we need 5 character variables.
+
+Char ch1 = 'S', ch2 = 'e', ch3 = 'o', ch4 = 'u', ch5 = 'l';
+
+Now, we have stored one data in 7 variables.
+If we wish to send this one data to a function, then we must send 7 arguments.
+
+However, passing one argument as one data is good.
+Hence we must save these 7 characters which are closely related together in one variable.
+Hence we use character arrays to store string data.
+
+char placeName [] = "Seoul";
+Here we have stored the data as one data and not 5 data.
+Also the string data has one implicit property when it is stored as a string in an array. That is, the excape sequence (null character) '\0' is stored as "end of string" character always.
+
+Char placeName2[] = {'S', 'e', 'o', 'u', 'l'};
+Here '\0' will not be stored at the end.
+
+
+Thus, the sizeof placeName1 is 6 characters in memory
+And ,the sizeof placeName2 is 5 character in memory.
+
+way to initialize a string:
+char userString1 [32] = ""; //empty string
+char userString2[32] = { '\0' }; // empty string
+char userString3[] = "Seoul"; 
+char userString4[] = {'S', 'e', 'o', 'u', 'l', '\0'};
+
+STRING HANDLING FUNCTIONS:
+
+strlen()
+It is used to find length of a string
+Prototype:
+int strlen(const char*);
+size_t strlen(const char*);    // used only to hold size of array, etc
+
+strcpy()
+It is used to copy a string into another
+Prototype:
+char* strcpy(char*, const char*);
+Usage: strcpy(destination, source);
+strcpy() returns the address of the destination string
+
+strcat()
+It is used to append/concatinate a string to other
+Prototype:
+char* strcat(char*, const char*);
+Usage: strcat(destination, source);
+strcat() returns the address of the destination string
+Note that, the source string is copied from end of the destination.
+Hence to concatinate the string, we must 1st find length of the destination string.
+
+strrev()
+It is used to reverse a string
+char* strrev(char*)
+It returns address of the o/p string which happens to be the i/p array itself
+
+strchr()
+It finds address of 1st occurance of the character in the string
+char* strchr(const char*, char)
+It returns the address of the 1st occurance of the given character in the string. If not found, it return NULL
+
+strrchr()
+It finds address of last occurance of the character in the string
+char* strrchr(const char*, char)
+It returns the address of the last occurance of the given character in the string. If not found, it return NULL
+To do this, the function starts the search from the end.
+Hence strrchr() 1st uses strlen()
+
+strcmp()
+It (case sensitive) compares two strings and returns an int value
+0 means the strings are same
+-1 means the 1st string is smaller than the 2nd
+1 meams the 2nd string is smaller than the 1st
+Note that, smaller we mean, where the difference of ASCII characters of the unmatching characters of the string
+Prototype:
+int strcmp(const char*, const char*)
+
+stricmp()
+It (case in-sensitive) compares two strings and returns an int value
+0 means the strings are same
+-1 means the 1st string is smaller than the 2nd
+1 meams the 2nd string is smaller than the 1st
+Note that, smaller we mean, where the difference of ASCII characters of the unmatching characters of the string
+Prototype:
+int stricmp(const char*, const char*)
+
+strncmp()
+It (case sensitive) compares two strings for 1st n characters only and returns an int value
+0 means the strings are same
+-1 means the 1st string is smaller than the 2nd
+1 meams the 2nd string is smaller than the 1st
+Note that, smaller we mean, where the difference of ASCII characters of the unmatching characters of the string
+Prototype:
+int strncmp(const char*, const char*, int)
+
+strstr()
+To check if a sub string is present in the given string
+It returns the address where the sub string is found, else NULL
+Prototype:
+char* strstr(const char* mainString, char* subString);
+
+strtok()
+
+
+---------------------------------------------------------
+Programs on strings
+2D array example on strings
+function pointer
+structure (definition, array of structures, nested, padding, bit fields, pointer to a structure, function pointer inside a structure, SRS)
+Bit manupalation
+DMA (malloc, calloc)
+Dynamic Array
+Styack and Queue implementation
+Linked Lists
+
+
+ 
